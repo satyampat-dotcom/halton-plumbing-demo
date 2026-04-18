@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halton Plumbing & Drains | Georgetown, ON</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0C2340;
+      --teal: #1D9E75;
+      --teal-light: #5DCAA5;
+      --white: #ffffff;
+      --gray-bg: #f5f5f3;
+      --gray-card: #f0efec;
+      --text-primary: #1a1a1a;
+      --text-muted: #666;
+      --border: rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-primary);
+      background: #fff;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0.875rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: box-shadow 0.2s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      color: var(--white);
+      font-size: 1.15rem;
+      letter-spacing: 0.01em;
+    }
+    .logo span { color: var(--teal-light); }
+
+    .nav-cta {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: #17875f; }
+
+    /* ── EMERGENCY BAR ── */
+    .emergency-bar {
+      background: var(--teal);
+      padding: 0.55rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .emergency-bar p {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .emergency-bar a {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+    }
+    .emergency-bar a:hover { text-decoration: underline; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 3.5rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 36px
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; max-width: 640px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(93,202,165,0.15);
+      border: 1px solid rgba(93,202,165,0.35);
+      color: var(--teal-light);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 5vw, 2.75rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.18;
+      margin-bottom: 1rem;
+    }
+    .hero h1 .accent { color: var(--teal-light); }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.68);
+      font-size: 15px;
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      max-width: 500px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 2.25rem;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #17875f; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 13px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: border-color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+
+    .trust-strip {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 2rem;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: rgba(255,255,255,0.6);
+      font-size: 12.5px;
+    }
+    .trust-check {
+      color: var(--teal-light);
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 3rem 2rem; }
+    section.alt { background: var(--gray-bg); }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      max-width: 520px;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── BOOKING ── */
+    .booking-card {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 1.75rem;
+      max-width: 520px;
+    }
+    .booking-card h3 {
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .booking-card .booking-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group { margin-bottom: 10px; }
+
+    .hp-input, .hp-select {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--white);
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+    .hp-input::placeholder { color: rgba(255,255,255,0.32); }
+    .hp-input:focus, .hp-select:focus { border-color: var(--teal-light); }
+    .hp-select { cursor: pointer; }
+    .hp-select option { background: var(--navy); color: var(--white); }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      margin-top: 4px;
+      transition: background 0.15s;
+    }
+    .btn-submit:hover { background: #17875f; }
+
+    .form-or {
+      text-align: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      margin: 0.875rem 0;
+    }
+    .form-call {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 13.5px;
+    }
+    .form-call a { color: var(--teal-light); font-weight: 500; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+    }
+    .service-icon {
+      font-size: 24px;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .service-card h4 {
+      font-size: 13.5px;
+      font-weight: 500;
+      margin-bottom: 3px;
+      color: var(--text-primary);
+    }
+    .service-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ── ABOUT ── */
+    .about-card {
+      background: var(--gray-card);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      max-width: 620px;
+    }
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      color: var(--teal-light);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .about-name {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .about-role {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .about-bio {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 12px;
+    }
+    .creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cred {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 11px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+
+    /* ── REVIEWS ── */
+    .stars {
+      color: #EF9F27;
+      font-size: 18px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+    .reviews-meta {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .review-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 620px;
+    }
+    .review {
+      background: var(--white);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.1rem;
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .review-text {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 7px;
+    }
+    .review-author {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 2rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer-name {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .footer-sub {
+      font-size: 13px;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .footer-links a {
+      color: var(--teal-light);
+      font-size: 13px;
+      transition: opacity 0.15s;
+    }
+    .footer-links a:hover { opacity: 0.75; }
+    .footer-copy {
+      font-size: 11.5px;
+      opacity: 0.4;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0.875rem 1.25rem; }
+      .emergency-bar { padding: 0.55rem 1.25rem; }
+      .hero { padding: 2.5rem 1.25rem 2.5rem; }
+      section { padding: 2.5rem 1.25rem; }
+      footer { padding: 2rem 1.25rem; }
+
+      .hero h1 { font-size: 1.8rem; }
+      .cta-row { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; width: 100%; }
+      .trust-strip { gap: 0.75rem 1.25rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-card { flex-direction: column; }
+      .emergency-bar { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="logo">Halton <span>Plumbing</span></div>
+    <a href="#booking" class="nav-cta">Book a call</a>
+  </nav>
+
+  <!-- EMERGENCY BAR -->
+  <div class="emergency-bar">
+    <p>24/7 Emergency service available</p>
+    <a href="tel:6472732825">647-273-2825 &rarr;</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:3.5rem;">
+    <div class="hero-inner">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Serving Halton Region &amp; GTA
+      </div>
+      <h1>Plumbing you can trust,<br><span class="accent">booked in minutes</span></h1>
+      <p class="hero-sub">Licensed Master Plumber Josh handles everything from urgent leaks to full bathroom renovations — with 20+ years of experience and upfront pricing.</p>
+      <div class="cta-row">
+        <a href="#booking" class="btn-primary">&#128197; Book online</a>
+        <a href="tel:6472732825" class="btn-secondary">&#128222; Call now</a>
+      </div>
+      <div class="trust-strip">
+        <div class="trust-item"><span class="trust-check">&#10003;</span> Master Plumber licensed</div>
+        <div class="trust-item"><span class="trust-check">&#10003;</span> Fully insured &amp; WSIB</div>
+        <div class="trust-item"><span class="trust-check">&#10003;</span> No hidden fees</div>
+        <div class="trust-item"><span class="trust-check">&#10003;</span> Same-day available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="section-label">Book a visit</div>
+    <h2 class="section-title">Get a free estimate</h2>
+    <p class="section-sub">Tell us what's going on and we'll get back to you within the hour — or call if it's urgent.</p>
+
+    <div class="booking-card">
+      <h3>Request a callback</h3>
+      <p class="booking-sub">Typically responds within 60 minutes</p>
+      <form id="booking-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <input class="hp-input" type="text" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <input class="hp-input" type="tel" name="phone" placeholder="Phone number" required />
+        </div>
+        <div class="form-group">
+          <select class="hp-select" name="service" required>
+            <option value="" disabled selected>What do you need help with?</option>
+            <option>Leak or burst pipe</option>
+            <option>Drain cleaning</option>
+            <option>Water heater</option>
+            <option>Bathroom renovation</option>
+            <option>Sump pump</option>
+            <option>Emergency — call me ASAP</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-submit">Request callback &rarr;</button>
+      </form>
+      <div class="form-or">or</div>
+      <div class="form-call">Call directly: <a href="tel:6472732825">647-273-2825</a></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section class="alt" id="services">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What we fix &amp; install</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🚿</span>
+        <h4>Leaks &amp; repairs</h4>
+        <p>Pipes, faucets, joints, and fixtures</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🪠</span>
+        <h4>Drain cleaning</h4>
+        <p>Clogs, backups, root intrusion</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔥</span>
+        <h4>Water heaters</h4>
+        <p>Repair, replace &amp; tankless install</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏠</span>
+        <h4>Renovations</h4>
+        <p>Kitchens, bathrooms &amp; rough-ins</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">💧</span>
+        <h4>Sump pumps</h4>
+        <p>Install, replace &amp; maintenance</p>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🏢</span>
+        <h4>Commercial</h4>
+        <p>Offices, retail &amp; multi-unit</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About Josh</div>
+    <h2 class="section-title">20+ years. Every type of property.</h2>
+    <div class="about-card">
+      <div class="avatar">J</div>
+      <div>
+        <div class="about-name">Josh Kowalski</div>
+        <div class="about-role">Owner &amp; Master Plumber</div>
+        <p class="about-bio">Started in residential plumbing in 2006, then spent nearly a decade servicing OPP detachments, courthouses, and government facilities across Ontario. Now focused on giving Halton homeowners and businesses that same level of precision and professionalism.</p>
+        <div class="creds">
+          <span class="cred">Master Plumber</span>
+          <span class="cred">Backflow certified</span>
+          <span class="cred">George Brown grad</span>
+          <span class="cred">WSIB registered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- REVIEWS -->
+  <section class="alt" id="reviews">
+    <div class="section-label">Reviews</div>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <p class="reviews-meta">Rated 5.0 &middot; 40+ Google reviews</p>
+    <div class="review-cards">
+      <div class="review">
+        <p class="review-text">"Josh was upfront about the cost, arrived when he said he would, and left everything clean. Couldn't ask for more in a plumber."</p>
+        <div class="review-author">— Sarah M., Oakville</div>
+      </div>
+      <div class="review">
+        <p class="review-text">"Called at 8pm with a burst pipe. Josh picked up immediately and was at our door within the hour. Absolute lifesaver."</p>
+        <div class="review-author">— David T., Burlington</div>
+      </div>
+      <div class="review">
+        <p class="review-text">"We've used Josh for two bathroom renovations now. Honest quotes, great work, no surprises on the bill."</p>
+        <div class="review-author">— Priya R., Milton</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Halton Plumbing &amp; Drains</div>
+    <p class="footer-sub">Georgetown, ON &middot; Serving Halton Region &amp; the GTA</p>
+    <div class="footer-links">
+      <a href="tel:6472732825">647-273-2825</a>
+      <a href="mailto:josh@haltonplumbingdrains.com">josh@haltonplumbingdrains.com</a>
+    </div>
+    <p class="footer-copy">&copy; 2025 Halton Plumbing &amp; Drains. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = e.target.name.value;
+      alert('Thanks ' + name + '! We\u2019ll call you back shortly.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
